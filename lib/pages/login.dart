@@ -49,9 +49,10 @@ class _LoginState extends State<Login> {
     );
   }
 
+  // 面部识别登录
   Widget _buildPageContent() {
     var appName = Text(
-      "FLUTTER_ADMIN",
+      S.of(context).sysName,
       style: TextStyle(fontSize: 16, color: Colors.blue),
       textScaleFactor: 3.2,
     );
@@ -237,6 +238,7 @@ class _LoginState extends State<Login> {
     Cry.pushNamed('/register');
   }
 
+  // 登录
   _login() async {
     var form = formKey.currentState!;
     if (!form.validate()) {

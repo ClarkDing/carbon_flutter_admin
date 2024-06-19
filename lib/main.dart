@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
       key: UniqueKey(),
       builder: Cry.init,
       debugShowCheckedModeBanner: false,
-      title: 'FLUTTER_ADMIN',
+      title: '碳寻智慧碳管理系统',
       enableLog: false,
       theme: Utils.getThemeData(),
       darkTheme: Utils.getThemeData(brightness: Brightness.light),

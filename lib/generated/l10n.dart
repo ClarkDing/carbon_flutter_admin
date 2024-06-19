@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `SysName`
+  String get sysName {
+    return Intl.message(
+      'Carbon Find Intellect System',
+      name: 'sysName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm`
   String get pageConfirm {
     return Intl.message(

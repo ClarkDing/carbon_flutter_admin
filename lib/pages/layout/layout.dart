@@ -21,6 +21,7 @@ import 'package:get/get.dart';
 
 import 'layout_controller.dart';
 
+// 主页面
 class Layout extends StatefulWidget {
   @override
   _LayoutState createState() => _LayoutState();

@@ -5,6 +5,7 @@
 /// @version: 1.0
 /// @description: 存储工具类
 
+import 'package:cry/cry_logger.dart';
 import 'package:cry/model/response_body_api.dart';
 import 'package:flutter_admin/api/dict_api.dart';
 import 'package:flutter_admin/api/menu_api.dart';
@@ -93,10 +94,13 @@ class StoreUtil {
     return responseBodyApi.success;
   }
 
+  // 加载子系统
   static Future<bool?> loadSubsystem() async {
+    CryLogger.info('loadSubsystem start');
     ResponseBodyApi responseBodyApi = await SubsystemApi.listEnable();
     if (responseBodyApi.success!) {
       StoreUtil.write(Constant.KEY_SUBSYSTEM_LIST, responseBodyApi.data);
+      CryLogger.info('loadSubsystem: ${responseBodyApi.data}');
       List<Subsystem> list = responseBodyApi.data == null ? [] : List.from(responseBodyApi.data).map((e) => Subsystem.fromMap(e)).toList();
       if (list.isNotEmpty) {
         StoreUtil.write(Constant.KEY_CURRENT_SUBSYSTEM, list[0].toMap());
