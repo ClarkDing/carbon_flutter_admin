@@ -13,12 +13,13 @@ import 'package:cry/cry.dart';
 import 'package:flutter_admin/constants/constant.dart';
 import 'package:cry/model/response_body_api.dart';
 import 'package:flutter_admin/pages/common/lang_switch.dart';
-import 'package:flutter_admin/utils/store_util.dart';
+import 'package:flutter_admin/utils/store_util_test.dart';
 import 'package:flutter_admin/api/user_api.dart';
 import 'package:flutter_admin/models/user.dart';
 import '../generated/l10n.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:camera/camera.dart';
+import 'dart:convert';
 
 class Login extends StatefulWidget {
   @override
@@ -246,8 +247,10 @@ class _LoginState extends State<Login> {
     }
     form.save();
 
+    Map<String, dynamic> loginInfo = json.decode('{"currentUserInfo":{"id":"ef8297d1c7333cdc6aeefa96bb8fb89f","createTime":"2020 - 08 - 20 02: 39: 35","updateTime":"2024 - 05 - 09 20: 58: 48","userId":"db288d951c390afb08c8341088bd90fa","nickName":"cry","avatarUrl":"http: //www.cairuoyu.com/f/p4/u-20230907160512866-1898476488.png","gender":1,"country":null,"province":null,"city":null,"name":"cairuoyu6","school":null,"major":null,"birthday":"1984 - 10 - 16","entrance":null,"hometown":" 广东省,汕尾市,城区","memo":null,"deptId":"a51eb6c64d4b6d42fbdeef781fd2a892","userName":"admin","deptName":"QQ群"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoiZGIyODhkOTUxYzM5MGFmYjA4YzgzNDEwODhiZDkwZmEiLCJpc3MiOiJ1c2VyIiwiaWF0IjoxNzE4Nzk3MzY5fQ.G7JPg0KEsFSoy_1uctO4fi9pSLzbY7auCQLg04doHtg"}');
+
     // ResponseBodyApi responseBodyApi = await UserApi.login(user.toMap());
-    ResponseBodyApi responseBodyApi = ResponseBodyApi().copyWith({'success' : true, 'code' : 200});
+    ResponseBodyApi responseBodyApi = ResponseBodyApi.fromMap({'success': true, 'code': '200', 'message': 'Test', 'data': loginInfo});
     if (!responseBodyApi.success!) {
       focusNodePassword.requestFocus();
       return;
@@ -256,13 +259,18 @@ class _LoginState extends State<Login> {
   }
 
   _loginSuccess(ResponseBodyApi responseBodyApi) async {
-    StoreUtil.write(Constant.KEY_TOKEN, responseBodyApi.data[Constant.KEY_TOKEN]);
-    StoreUtil.write(Constant.KEY_CURRENT_USER_INFO, responseBodyApi.data[Constant.KEY_CURRENT_USER_INFO]);
-    await StoreUtil.loadDict();
-    await StoreUtil.loadSubsystem();
-    await StoreUtil.loadMenuData();
-    await StoreUtil.loadDefaultTabs();
-    StoreUtil.init();
+    print("_loginSuccess start");
+    StoreUtilTest.write(Constant.KEY_TOKEN, responseBodyApi.data[Constant.KEY_TOKEN]);
+    StoreUtilTest.write(Constant.KEY_CURRENT_USER_INFO, responseBodyApi.data[Constant.KEY_CURRENT_USER_INFO]);
+    print("loadDict start");
+    await StoreUtilTest.loadDict();
+    print("loadSubsystem start");
+    await StoreUtilTest.loadSubsystem();
+    print("loadMenuData start");
+    await StoreUtilTest.loadMenuData();
+    print("loadDefaultTabs start");
+    await StoreUtilTest.loadDefaultTabs();
+    StoreUtilTest.init();
 
     Cry.pushNamed('/');
   }

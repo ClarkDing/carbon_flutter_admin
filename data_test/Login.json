@@ -1,0 +1,30 @@
+{
+  "code": 0,
+  "success": true,
+  "message": null,
+  "data": {
+    "currentUserInfo": {
+      "id": "ef8297d1c7333cdc6aeefa96bb8fb89f",
+      "createTime": "2020 - 08 - 20 02: 39: 35",
+      "updateTime": "2024 - 05 - 09 20: 58: 48",
+      "userId": "db288d951c390afb08c8341088bd90fa",
+      "nickName": "cry",
+      "avatarUrl": "http: //www.cairuoyu.com/f/p4/u-20230907160512866-1898476488.png",
+      "gender": 1,
+      "country": null,
+      "province": null,
+      "city": null,
+      "name": "cairuoyu6",
+      "school": null,
+      "major": null,
+      "birthday": "1984 - 10 - 16",
+      "entrance": null,
+      "hometown": " 广东省,汕尾市,城区",
+      "memo": null,
+      "deptId": "a51eb6c64d4b6d42fbdeef781fd2a892",
+      "userName": "admin",
+      "deptName": "QQ群"
+    },
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwic3ViIjoiZGIyODhkOTUxYzM5MGFmYjA4YzgzNDEwODhiZDkwZmEiLCJpc3MiOiJ1c2VyIiwiaWF0IjoxNzE4Nzk3MzY5fQ.G7JPg0KEsFSoy_1uctO4fi9pSLzbY7auCQLg04doHtg"
+  }
+}
